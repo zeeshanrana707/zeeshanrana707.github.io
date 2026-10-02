@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Zeeshan | Data Science, ML & NLP Developer</title>
+  <meta name="description" content="Portfolio of Muhammad Zeeshan - Data Scientist & AI Developer specializing in Machine Learning, Natural Language Processing (NLP), and intelligent data architectures.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glow-cyan {
+      box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.25);
+    }
+    .glow-dot {
+      animation: pulseGlow 2s infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #resume-modal, #resume-modal * {
+        visibility: visible;
+      }
+      #resume-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        color: black !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- Fixed Navigation Header -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 font-mono font-bold text-lg text-white hover:text-cyan-400 transition">
+        <span class="w-3 h-3 rounded-full bg-cyan-400 glow-dot"></span>
+        <span class="dynamic-name">Muhammad Zeeshan</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-cyan-400 transition">About</a>
+        <a href="#skills" class="hover:text-cyan-400 transition">Skills</a>
+        <a href="#experience" class="hover:text-cyan-400 transition">Experience</a>
+        <a href="#projects" class="hover:text-cyan-400 transition">Projects</a>
+        <a href="#certifications" class="hover:text-cyan-400 transition">Certifications</a>
+        <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5">
+        <a href="admin.html" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition font-mono flex items-center gap-1.5" title="Open Admin Panel to add/edit projects">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <span class="hidden sm:inline">Admin</span>
+        </a>
+        <button onclick="openResumeModal()" class="px-4 py-1.5 text-xs font-semibold rounded-lg bg-cyan-500 text-slate-950 hover:bg-cyan-400 transition shadow-sm font-mono">
+          Resume
+        </button>
+        <a href="https://github.com/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-github-link p-2 text-slate-400 hover:text-white transition">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="pt-32 pb-20">
+    <section class="max-w-6xl mx-auto px-6 mb-24">
+      <div class="max-w-3xl">
+        <!-- Status Indicator -->
+        <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-800/60 text-emerald-400 text-xs font-mono mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Available for Data Science, ML & NLP Roles</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight mb-4 dynamic-name">
+          Muhammad Zeeshan
+        </h1>
+        <p class="text-xl sm:text-2xl font-medium text-cyan-400 mb-6 font-mono dynamic-title">
+          Data Scientist & AI/ML Developer
+        </p>
+        
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl dynamic-headline">
+          Specializing in Data Science, Machine Learning (ML), and Natural Language Processing (NLP). Turning complex data into actionable predictive intelligence and high-accuracy production models.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-4">
+          <button onclick="openResumeModal()" class="px-6 py-3 rounded-xl bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition shadow-lg shadow-cyan-500/20 flex items-center gap-2 font-mono">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <span>View & Download Resume</span>
+          </button>
+          <a href="#projects" class="px-6 py-3 rounded-xl bg-slate-900 text-white font-semibold text-sm border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800 transition flex items-center gap-2">
+            <span>Explore Projects</span>
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </a>
+          <a href="#contact" class="px-6 py-3 rounded-xl text-slate-300 font-semibold text-sm hover:text-cyan-400 transition">
+            Get In Touch →
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Counters -->
+      <div id="stats-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <div>
+          <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">01. Background</span>
+          <h2 class="text-3xl font-bold text-white mt-1">About Me</h2>
+        </div>
+        <div class="md:col-span-2 text-slate-300 space-y-4 text-base leading-relaxed">
+          <p id="dynamic-bio">
+            I am an AI Developer and Data Scientist passionate about architecting predictive machine learning models, natural language processing (NLP) pipelines, and intelligent data systems. Combining rigorous technical foundations from DeepLearning.AI and IBM with hands-on software development experience, I specialize in end-to-end data science workflows, algorithmic modeling, and scalable Python solutions.
+          </p>
+          <p>
+            My technical focus spans statistical data modeling, supervised/unsupervised machine learning, NLP text classification, and automated backend data infrastructure. I prioritize high test accuracy, resilient architecture, and maintainable software engineering principles in every solution I build.
+          </p>
+          <div class="pt-4 flex flex-wrap gap-4 font-mono text-xs text-slate-400">
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>📍 Lahore, Pakistan</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>💼 Open to Remote & Relocation</span>
+            <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>⚡ Data Science, ML & NLP</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Matrix -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
+      <div class="mb-10">
+        <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">02. Competencies</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Technical Skills Matrix</h2>
+        <p class="text-slate-400 text-sm mt-2">Core proficiencies categorized across Data Science, Machine Learning, NLP, and software engineering.</p>
+      </div>
+      <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section id="experience" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
+      <div class="mb-10">
+        <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">03. Career</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Professional Experience</h2>
+        <p class="text-slate-400 text-sm mt-2">Industry and collaborative open-source engineering roles documented with measurable outcomes.</p>
+      </div>
+      <div id="experience-timeline" class="max-w-3xl">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
+      <div class="flex flex-wrap justify-between items-end gap-4 mb-10">
+        <div>
+          <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">04. Code & Architecture</span>
+          <h2 class="text-3xl font-bold text-white mt-1">Featured Projects</h2>
+          <p class="text-slate-400 text-sm mt-2">Production-grade applications showcasing Machine Learning, NLP, data pipelines, and backend system designs.</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="admin.html#projects" class="text-xs font-mono text-slate-400 hover:text-cyan-400 flex items-center gap-1 border border-slate-800 px-3 py-1.5 rounded-lg hover:border-slate-700 transition">
+            <span>+ Add Project via Admin</span>
+          </a>
+          <a href="https://github.com/zeeshanrana707?tab=repositories" target="_blank" rel="noopener noreferrer" class="dynamic-github-link text-sm font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-mono">
+            <span>View GitHub</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Responsive dynamic grid that scales seamlessly for 1, 3, 6, 12+ projects -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
+      <div class="flex flex-wrap justify-between items-end gap-4 mb-10">
+        <div>
+          <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">05. Continuous Learning</span>
+          <h2 class="text-3xl font-bold text-white mt-1">Certifications & Training</h2>
+          <p class="text-slate-400 text-sm mt-2">Accredited certifications authorized by DeepLearning.AI, IBM, and HEC-DLSEI.</p>
+        </div>
+        <a href="admin.html#certifications" class="text-xs font-mono text-slate-400 hover:text-cyan-400 flex items-center gap-1 border border-slate-800 px-3 py-1.5 rounded-lg hover:border-slate-700 transition">
+          <span>+ Add Certification</span>
+        </a>
+      </div>
+      
+      <!-- Responsive dynamic grid for certifications -->
+      <div id="certifications-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+        <!-- Rendered dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- CTA & Contact Section -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 py-20 border-t border-slate-800/80">
+      <div class="rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-8 sm:p-14 text-center max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-24 -left-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">06. Next Steps</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 tracking-tight">
+          Let's Build Something High-Impact
+        </h2>
+        <p class="text-slate-300 text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+          I am actively interviewing for <strong class="text-white">Data Science, Machine Learning (ML), and Natural Language Processing (NLP)</strong> engineering positions. Let's discuss how I can contribute to your team.
+        </p>
+
+        <!-- Direct Contact Action Links -->
+        <div class="flex flex-wrap justify-center items-center gap-4 mb-8">
+          <a href="mailto:rh3783901@gmail.com" class="dynamic-email-link px-6 py-3 rounded-xl bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition shadow-lg shadow-cyan-500/20 font-mono">
+            ✉️ rh3783901@gmail.com
+          </a>
+          <a href="https://wa.me/923019843724" target="_blank" rel="noopener noreferrer" class="dynamic-phone-link px-6 py-3 rounded-xl bg-slate-800 text-white font-semibold text-sm hover:bg-slate-700 transition border border-slate-700 font-mono">
+            💬 WhatsApp (+92 301 9843724)
+          </a>
+          <button onclick="openResumeModal()" class="px-6 py-3 rounded-xl bg-slate-900 text-cyan-400 font-semibold text-sm hover:bg-slate-800 transition border border-cyan-800/60 font-mono">
+            📄 View Resume
+          </button>
+        </div>
+
+        <div class="text-xs text-slate-500 font-mono">
+          Lahore, Pakistan • Open to Remote Worldwide & On-Site Roles
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-8 bg-slate-950 text-slate-500 text-xs font-mono">
+    <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
+      <div>
+        © 2026 <span class="dynamic-name">Muhammad Zeeshan</span>. All rights reserved.
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="admin.html" class="hover:text-cyan-400 transition flex items-center gap-1">⚙️ Admin Panel</a>
+        <a href="https://github.com/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-github-link hover:text-cyan-400 transition">GitHub</a>
+        <a href="https://linkedin.com/in/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-linkedin-link hover:text-cyan-400 transition">LinkedIn</a>
+        <a href="mailto:rh3783901@gmail.com" class="hover:text-cyan-400 transition">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Resume Modal -->
+  <div id="resume-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-slate-800 flex items-center justify-between no-print">
+        <div>
+          <h3 class="text-xl font-bold text-white">Curriculum Vitae</h3>
+          <p class="text-xs text-slate-400 font-mono mt-0.5"><span class="dynamic-name">Muhammad Zeeshan</span> • ATS Master Version</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="printResume()" class="px-4 py-2 rounded-xl bg-cyan-400 text-slate-950 font-bold text-xs hover:bg-cyan-300 transition flex items-center gap-1.5 font-mono">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            <span>Print / Save as PDF</span>
+          </button>
+          <button onclick="closeResumeModal()" class="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body (Printable Resume Content) -->
+      <div class="p-8 overflow-y-auto font-sans text-slate-200 text-sm leading-relaxed space-y-6 bg-slate-950" id="resume-printable-area">
+        <div class="border-b border-slate-800 pb-4 text-center">
+          <h1 class="text-2xl font-bold text-white tracking-wide dynamic-name">MUHAMMAD ZEESHAN</h1>
+          <p class="text-xs text-slate-400 font-mono mt-1">
+            Lahore, Pakistan | +92 301 9843724 | rh3783901@gmail.com | github.com/zeeshanrana707
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-1 mb-2">Professional Summary</h2>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Results-driven Data Scientist and AI/ML Developer with hands-on experience architecting predictive machine learning models, natural language processing (NLP) pipelines, and intelligent software applications. Proven expertise implementing advanced algorithms, data validation, and classification systems with 98%+ accuracy. Certified in DeepLearning.AI and IBM Data Science methodologies, with an active track record of open-source contributions.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-1 mb-2">Technical Skills</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-300">
+            <div><strong class="text-white">Languages:</strong> Python (Advanced), SQL (PostgreSQL, MSSQL, SQLite), Bash</div>
+            <div><strong class="text-white">Machine Learning:</strong> Scikit-learn, Pandas, NumPy, Gaussian Naive Bayes, Isolation Forest</div>
+            <div><strong class="text-white">NLP & Data Science:</strong> Text Preprocessing, Sentiment Analysis, EDA, Feature Engineering</div>
+            <div><strong class="text-white">Frameworks & Tools:</strong> Flask, RESTful APIs, Git, GitHub, Jupyter Lab, VS Code</div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-1 mb-3">Professional Experience</h2>
+          
+          <div class="mb-4">
+            <div class="flex justify-between items-baseline">
+              <span class="font-bold text-white text-xs">Data Scraper Intern — Programmers Force</span>
+              <span class="text-[11px] font-mono text-slate-400">July 2025 – Present | Remote</span>
+            </div>
+            <ul class="list-disc list-inside text-xs text-slate-300 space-y-1 mt-1.5">
+              <li>Architected and deployed automated Python extraction pipelines to reliably collect unstructured data from dynamic web targets.</li>
+              <li>Implemented anti-bot protocols (proxy rotation, user-agent pools, exponential backoff), achieving a 99.2% extraction success rate with zero IP bans.</li>
+              <li>Engineered automated data validation scripts in Pandas, eliminating duplicate records and reducing downstream processing time by 80%.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-baseline">
+              <span class="font-bold text-white text-xs">Open-Source Software Collaborator — Orvix Repository</span>
+              <span class="text-[11px] font-mono text-slate-400">May 2026 – Present | Remote</span>
+            </div>
+            <ul class="list-disc list-inside text-xs text-slate-300 space-y-1 mt-1.5">
+              <li>Contributed modular Python code enhancements and bug fixes to the Orvix repository following Git version control best practices.</li>
+              <li>Refactored modules for enhanced runtime execution performance and strict PEP 8 compliance.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-1 mb-3">Featured Projects</h2>
+          
+          <div class="space-y-3 text-xs">
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-white">
+                <span>MediPredict — AI Disease Prediction System</span>
+                <span class="font-mono text-[11px] text-cyan-400">98.77% Test Accuracy</span>
+              </div>
+              <p class="text-slate-300 mt-0.5">Built predictive classification engine using Gaussian Naive Bayes and Flask with sub-second diagnostic triage.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-white">
+                <span>AI Smart Banking & Real-Time Fraud Detection</span>
+                <span class="font-mono text-[11px] text-cyan-400">Unsupervised ML</span>
+              </div>
+              <p class="text-slate-300 mt-0.5">Implemented Isolation Forest anomaly scoring to identify and quarantine fraudulent banking transactions in real-time.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline font-bold text-white">
+                <span>Smart Zoo Management & Operations System</span>
+                <span class="font-mono text-[11px] text-cyan-400">&lt;50ms Query Latency</span>
+              </div>
+              <p class="text-slate-300 mt-0.5">Engineered operational enterprise system with normalized Microsoft SQL Server database and Flask REST APIs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 border-b border-slate-800 pb-1 mb-2">Certifications</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-1.5 text-xs text-slate-300">
+            <div>• Data Science Specialization — HEC-DLSEI 3.0 (Jan 2026)</div>
+            <div>• Data Science Methodology — IBM / Coursera (Jan 2026)</div>
+            <div>• Tools for Data Science — IBM / Coursera (Jan 2026)</div>
+            <div>• What is Data Science? — IBM / Coursera (Jan 2026)</div>
+            <div>• AI For Everyone — DeepLearning.AI / Coursera (Jul 2025)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
