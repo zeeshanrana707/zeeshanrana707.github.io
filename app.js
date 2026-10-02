@@ -14,7 +14,7 @@ const defaultData = {
     "bio": "I am an AI Developer and Data Scientist passionate about architecting predictive machine learning models, natural language processing (NLP) pipelines, and intelligent data systems. Combining rigorous technical foundations from DeepLearning.AI and IBM with hands-on software development experience, I specialize in end-to-end data science workflows, algorithmic modeling, and scalable Python solutions."
   },
   "stats": [
-    { "label": "Years Experience", "value": "1+" },
+    { "label": "Industry Internship", "value": "3 Months" },
     { "label": "AI & ML Systems", "value": "3+" },
     { "label": "Model Test Accuracy", "value": "98.77%" },
     { "label": "Verified Certifications", "value": "5" }
@@ -49,7 +49,7 @@ const defaultData = {
     {
       "role": "Data Scraper Intern",
       "company": "Programmers Force",
-      "period": "July 2025 – Present",
+      "period": "July 2025 – September 2025 (3 Months)",
       "location": "Remote",
       "type": "Internship",
       "highlights": [
