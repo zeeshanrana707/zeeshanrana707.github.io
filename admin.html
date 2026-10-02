@@ -69,6 +69,9 @@
         <button onclick="saveAllChanges()" class="px-5 py-2 rounded-xl text-xs font-bold text-slate-950 bg-cyan-400 hover:bg-cyan-300 transition shadow-lg shadow-cyan-500/20 flex items-center gap-1.5 font-mono">
           <span>💾 Save Changes</span>
         </button>
+        <button onclick="logoutAdmin()" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-rose-300 bg-rose-950/60 hover:bg-rose-900 border border-rose-800/60 transition flex items-center gap-1.5 font-mono" title="Lock Admin Panel">
+          <span>🔒 Logout</span>
+        </button>
       </div>
     </div>
   </header>
@@ -386,6 +389,13 @@
       } else {
         document.getElementById('pin-error').classList.remove('hidden');
       }
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('admin_unlocked');
+      document.getElementById('admin-pin-input').value = '';
+      document.getElementById('pin-error').classList.add('hidden');
+      document.getElementById('pin-lock-screen').classList.remove('hidden');
     }
 
     // Auto-unlock if already unlocked in this session
