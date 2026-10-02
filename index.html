@@ -62,7 +62,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black">
 
-  <!-- Fixed Navigation Header -->
+  <!-- Fixed Navigation Header (Clean, Recruiter Focused) -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#" class="flex items-center gap-2.5 font-mono font-bold text-lg text-white hover:text-cyan-400 transition">
@@ -81,15 +81,11 @@
       </nav>
 
       <!-- Action Buttons -->
-      <div class="flex items-center gap-2.5">
-        <a href="admin.html" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition font-mono flex items-center gap-1.5" title="Open Admin Panel to add/edit projects">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-          <span class="hidden sm:inline">Admin</span>
-        </a>
-        <button onclick="openResumeModal()" class="px-4 py-1.5 text-xs font-semibold rounded-lg bg-cyan-500 text-slate-950 hover:bg-cyan-400 transition shadow-sm font-mono">
+      <div class="flex items-center gap-3">
+        <button onclick="openResumeModal()" class="px-4 py-1.5 text-xs font-semibold rounded-lg bg-cyan-400 text-slate-950 hover:bg-cyan-300 transition shadow-sm font-mono">
           Resume
         </button>
-        <a href="https://github.com/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-github-link p-2 text-slate-400 hover:text-white transition">
+        <a href="https://github.com/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-github-link p-2 text-slate-400 hover:text-white transition" title="GitHub Profile">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
       </div>
@@ -194,34 +190,26 @@
           <h2 class="text-3xl font-bold text-white mt-1">Featured Projects</h2>
           <p class="text-slate-400 text-sm mt-2">Production-grade applications showcasing Machine Learning, NLP, data pipelines, and backend system designs.</p>
         </div>
-        <div class="flex items-center gap-4">
-          <a href="admin.html#projects" class="text-xs font-mono text-slate-400 hover:text-cyan-400 flex items-center gap-1 border border-slate-800 px-3 py-1.5 rounded-lg hover:border-slate-700 transition">
-            <span>+ Add Project via Admin</span>
-          </a>
-          <a href="https://github.com/zeeshanrana707?tab=repositories" target="_blank" rel="noopener noreferrer" class="dynamic-github-link text-sm font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-mono">
-            <span>View GitHub</span>
-            <span>→</span>
-          </a>
-        </div>
+        <a href="https://github.com/zeeshanrana707?tab=repositories" target="_blank" rel="noopener noreferrer" class="dynamic-github-link text-sm font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-mono">
+          <span>View GitHub</span>
+          <span>→</span>
+        </a>
       </div>
       
-      <!-- Responsive dynamic grid that scales seamlessly for 1, 3, 6, 12+ projects -->
+      <!-- Responsive dynamic grid -->
       <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
         <!-- Rendered dynamically via app.js -->
       </div>
     </section>
 
-    <!-- Certifications Section -->
+    <!-- Certifications Section (with Online Credential Verification) -->
     <section id="certifications" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
       <div class="flex flex-wrap justify-between items-end gap-4 mb-10">
         <div>
           <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">05. Continuous Learning</span>
-          <h2 class="text-3xl font-bold text-white mt-1">Certifications & Training</h2>
-          <p class="text-slate-400 text-sm mt-2">Accredited certifications authorized by DeepLearning.AI, IBM, and HEC-DLSEI.</p>
+          <h2 class="text-3xl font-bold text-white mt-1">Certifications & Accreditations</h2>
+          <p class="text-slate-400 text-sm mt-2">Verified credentials authorized by DeepLearning.AI, IBM, and HEC-DLSEI with live online verification.</p>
         </div>
-        <a href="admin.html#certifications" class="text-xs font-mono text-slate-400 hover:text-cyan-400 flex items-center gap-1 border border-slate-800 px-3 py-1.5 rounded-lg hover:border-slate-700 transition">
-          <span>+ Add Certification</span>
-        </a>
       </div>
       
       <!-- Responsive dynamic grid for certifications -->
@@ -271,7 +259,6 @@
         © 2026 <span class="dynamic-name">Muhammad Zeeshan</span>. All rights reserved.
       </div>
       <div class="flex items-center gap-6">
-        <a href="admin.html" class="hover:text-cyan-400 transition flex items-center gap-1">⚙️ Admin Panel</a>
         <a href="https://github.com/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-github-link hover:text-cyan-400 transition">GitHub</a>
         <a href="https://linkedin.com/in/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-linkedin-link hover:text-cyan-400 transition">LinkedIn</a>
         <a href="mailto:rh3783901@gmail.com" class="hover:text-cyan-400 transition">Email</a>

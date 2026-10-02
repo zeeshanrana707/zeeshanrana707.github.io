@@ -1,5 +1,5 @@
 // Muhammad Zeeshan Portfolio Engine
-// Supports dynamic rendering, localStorage sync, and offline fallback
+// Supports dynamic rendering, online credential verification, and offline fallback
 
 const defaultData = {
   "profile": {
@@ -15,7 +15,7 @@ const defaultData = {
   },
   "stats": [
     { "label": "Years Experience", "value": "1+" },
-    { "label": "Data Points Mined", "value": "100K+" },
+    { "label": "AI & ML Systems", "value": "3+" },
     { "label": "Model Test Accuracy", "value": "98.77%" },
     { "label": "Verified Certifications", "value": "5" }
   ],
@@ -115,37 +115,41 @@ const defaultData = {
       "title": "Data Science Specialization",
       "issuer": "HEC-DLSEI 3.0 Program",
       "date": "Jan 2026",
-      "skills": "Comprehensive Data Science Curriculum & Practical Implementation"
+      "skills": "Comprehensive Data Science Curriculum & Practical Implementation",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     },
     {
       "title": "Data Science Methodology",
       "issuer": "IBM via Coursera",
       "date": "Jan 2026",
-      "skills": "CRISP-DM, Business Understanding, Data Modeling, Pipeline Architecture"
+      "skills": "CRISP-DM, Business Understanding, Data Modeling, Pipeline Architecture",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     },
     {
       "title": "Tools for Data Science",
       "issuer": "IBM via Coursera",
       "date": "Jan 2026",
-      "skills": "Jupyter Notebooks, Git/GitHub, RStudio, Watson Studio, CLI"
+      "skills": "Jupyter Notebooks, Git/GitHub, RStudio, Watson Studio, CLI",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     },
     {
       "title": "What is Data Science?",
       "issuer": "IBM via Coursera",
       "date": "Jan 2026",
-      "skills": "Statistical Analysis, Predictive Modeling, Machine Learning Fundamentals"
+      "skills": "Statistical Analysis, Predictive Modeling, Machine Learning Fundamentals",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     },
     {
       "title": "AI For Everyone",
       "issuer": "DeepLearning.AI via Coursera",
       "date": "Jul 2025",
-      "skills": "Neural Networks, Machine Learning Strategy, AI Ethics & Project Feasibility"
+      "skills": "Neural Networks, Machine Learning Strategy, AI Ethics & Project Feasibility",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     }
   ]
 };
 
 async function loadData() {
-  // Check if live server has data.json
   try {
     const res = await fetch('data.json?t=' + Date.now());
     if (res.ok) {
@@ -155,7 +159,6 @@ async function loadData() {
     console.warn("Serving from local storage or embedded fallback.");
   }
   
-  // Check localStorage if edited via Admin
   const local = localStorage.getItem('portfolio_data');
   if (local) {
     try {
@@ -235,7 +238,7 @@ function renderSkills(skills) {
 function renderExperience(experiences) {
   const container = document.getElementById('experience-timeline');
   if (!container || !Array.isArray(experiences)) return;
-  container.innerHTML = experiences.map((exp, idx) => `
+  container.innerHTML = experiences.map((exp) => `
     <div class="relative pl-8 pb-10 border-l border-slate-800 last:pb-0">
       <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-slate-950 border-2 border-cyan-400"></div>
       <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-7 hover:border-slate-700 transition">
@@ -315,22 +318,28 @@ function renderProjects(projects) {
 function renderCertifications(certs) {
   const container = document.getElementById('certifications-grid');
   if (!container || !Array.isArray(certs)) return;
-  container.innerHTML = certs.map(c => `
-    <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between">
-      <div>
-        <div class="flex justify-between items-start gap-2 mb-2">
-          <span class="text-xs font-semibold px-2.5 py-1 rounded bg-indigo-950/80 text-indigo-300 border border-indigo-800/50">${c.issuer}</span>
-          <span class="text-xs font-mono text-slate-400">${c.date}</span>
+  container.innerHTML = certs.map(c => {
+    const verifyUrl = c.verifyUrl || "https://www.coursera.org/account/accomplishments/verify";
+    return `
+      <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start gap-2 mb-2">
+            <span class="text-xs font-semibold px-2.5 py-1 rounded bg-indigo-950/80 text-indigo-300 border border-indigo-800/50">${c.issuer}</span>
+            <span class="text-xs font-mono text-slate-400">${c.date}</span>
+          </div>
+          <h4 class="text-base font-bold text-white mt-3">${c.title}</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">${c.skills}</p>
         </div>
-        <h4 class="text-base font-bold text-white mt-3">${c.title}</h4>
-        <p class="text-xs text-slate-400 mt-2 leading-relaxed">${c.skills}</p>
+        <div class="mt-5 pt-3 border-t border-slate-800/60 flex items-center justify-between">
+          <a href="${verifyUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-medium transition" title="Verify certificate online">
+            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            <span class="underline underline-offset-2">Verify Credential Online</span>
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
       </div>
-      <div class="mt-4 pt-3 border-t border-slate-800/60 flex items-center gap-1.5 text-xs text-emerald-400 font-medium">
-        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-        <span>Verified Credential</span>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 }
 
 // Interactive Resume Modal Functions

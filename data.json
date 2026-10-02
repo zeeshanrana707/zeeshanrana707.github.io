@@ -11,85 +11,35 @@
     "bio": "I am an AI Developer and Data Scientist passionate about architecting predictive machine learning models, natural language processing (NLP) pipelines, and intelligent data systems. Combining rigorous technical foundations from DeepLearning.AI and IBM with hands-on software development experience, I specialize in end-to-end data science workflows, algorithmic modeling, and scalable Python solutions."
   },
   "stats": [
-    {
-      "label": "Years Experience",
-      "value": "1+"
-    },
-    {
-      "label": "Data Points Mined",
-      "value": "100K+"
-    },
-    {
-      "label": "Model Test Accuracy",
-      "value": "98.77%"
-    },
-    {
-      "label": "Verified Certifications",
-      "value": "5"
-    }
+    { "label": "Years Experience", "value": "1+" },
+    { "label": "AI & ML Systems", "value": "3+" },
+    { "label": "Model Test Accuracy", "value": "98.77%" },
+    { "label": "Verified Certifications", "value": "5" }
   ],
   "skills": [
     {
       "category": "Core & Languages",
-      "items": [
-        "Python (Advanced)",
-        "SQL (PostgreSQL / MSSQL / SQLite)",
-        "Bash / Shell",
-        "Regular Expressions (Regex)"
-      ]
+      "items": ["Python (Advanced)", "SQL (PostgreSQL / MSSQL / SQLite)", "Bash / Shell", "Regular Expressions (Regex)"]
     },
     {
       "category": "Data Science & Machine Learning",
-      "items": [
-        "Scikit-learn",
-        "Pandas",
-        "NumPy",
-        "Gaussian Naive Bayes",
-        "Isolation Forest",
-        "Feature Engineering",
-        "Model Evaluation & Cross-Validation"
-      ]
+      "items": ["Scikit-learn", "Pandas", "NumPy", "Gaussian Naive Bayes", "Isolation Forest", "Feature Engineering", "Model Evaluation & Cross-Validation"]
     },
     {
       "category": "Natural Language Processing (NLP)",
-      "items": [
-        "Text Preprocessing",
-        "Tokenization & Lemmatization",
-        "TF-IDF & Embeddings",
-        "Sentiment Analysis",
-        "NLTK / Text Processing"
-      ]
+      "items": ["Text Preprocessing", "Tokenization & Lemmatization", "TF-IDF & Embeddings", "Sentiment Analysis", "NLTK / Text Processing"]
     },
     {
       "category": "Data Engineering & Automation",
-      "items": [
-        "Automated Data Pipelines",
-        "ETL / ELT Workflows",
-        "Scrapy & Selenium",
-        "DOM & API Extraction",
-        "Data Cleaning & Imputation"
-      ]
+      "items": ["Automated Data Pipelines", "ETL / ELT Workflows", "Scrapy & Selenium", "DOM & API Extraction", "Data Cleaning & Imputation"]
     },
     {
       "category": "Frameworks & Databases",
-      "items": [
-        "Flask",
-        "RESTful APIs",
-        "Microsoft SQL Server",
-        "SQLite",
-        "JSON / XML"
-      ]
+      "items": ["Flask", "RESTful APIs", "Microsoft SQL Server", "SQLite", "JSON / XML"]
     },
     {
       "category": "Tools & Methodologies",
-      "items": [
-        "Git & GitHub",
-        "Linux/CLI",
-        "Jupyter Lab",
-        "VS Code",
-        "Agile/Scrum",
-        "IBM Data Science Methodology"
-      ]
+      "items": ["Git & GitHub", "Linux/CLI", "Jupyter Lab", "VS Code", "Agile/Scrum", "IBM Data Science Methodology"]
     }
   ],
   "experience": [
@@ -104,13 +54,7 @@
         "Implemented anti-bot mitigation protocols (proxy rotation, user-agent pools, backoff retry logic), achieving a 99.2% extraction success rate with zero IP bans.",
         "Engineered automated data validation scripts in Pandas, eliminating duplicate records and reducing downstream processing time by 80%."
       ],
-      "tags": [
-        "Python",
-        "Scrapy",
-        "Selenium",
-        "Pandas",
-        "ETL Pipelines"
-      ]
+      "tags": ["Python", "Scrapy", "Selenium", "Pandas", "ETL Pipelines"]
     },
     {
       "role": "GitHub Collaborator",
@@ -122,13 +66,7 @@
         "Contributed modular Python enhancements and issue resolutions to the open-source Orvix codebase following Git version control best practices.",
         "Refactored core modules for improved execution performance and enforced strict PEP 8 compliance."
       ],
-      "tags": [
-        "Python",
-        "Git",
-        "GitHub",
-        "Open Source",
-        "Code Optimization"
-      ]
+      "tags": ["Python", "Git", "GitHub", "Open Source", "Code Optimization"]
     }
   ],
   "projects": [
@@ -141,13 +79,7 @@
       "problem": "Clinical triage suffers from diagnostic delays due to overlapping symptom presentations and lack of fast preliminary triage tools.",
       "solution": "Built a predictive ML engine trained on diagnostic symptom matrices. Developed a responsive Flask web interface with dynamic search autocomplete and stratified k-fold cross-validation.",
       "impact": "98.77% classification accuracy on unseen test data with sub-second inference and zero external API dependencies.",
-      "tags": [
-        "Python",
-        "Flask",
-        "Scikit-learn",
-        "Pandas",
-        "Gaussian Naive Bayes"
-      ],
+      "tags": ["Python", "Flask", "Scikit-learn", "Pandas", "Gaussian Naive Bayes"],
       "githubUrl": "https://github.com/zeeshanrana707/Disease_Prediction_System"
     },
     {
@@ -159,13 +91,7 @@
       "problem": "Rule-based legacy banking systems fail to detect novel, evolving fraudulent vectors without manual analyst intervention.",
       "solution": "Implemented an unsupervised Isolation Forest model analyzing transaction features (amount, velocity, time variance) to calculate anomaly scores before ledger commitment.",
       "impact": "Automated zero-day fraud pattern detection integrated with full banking workflows (accounts, transfers, and security alert logs).",
-      "tags": [
-        "Python",
-        "Scikit-learn",
-        "Isolation Forest",
-        "Flask",
-        "SQLite"
-      ],
+      "tags": ["Python", "Scikit-learn", "Isolation Forest", "Flask", "SQLite"],
       "githubUrl": "https://github.com/zeeshanrana707/Ai_Smart_Banking"
     },
     {
@@ -177,13 +103,7 @@
       "problem": "Fragmented, manual logging systems lead to operational oversights in veterinary regimens, staff shifts, and emergency medical histories.",
       "solution": "Architected a normalized relational database in MS SQL Server with modular Flask RESTful API endpoints for high-throughput operational tracking.",
       "impact": "Centralized veterinary records, schedules, and staff shifts into an integrated administrative dashboard with sub-50ms query times.",
-      "tags": [
-        "Python",
-        "Flask",
-        "Microsoft SQL Server",
-        "T-SQL",
-        "REST APIs"
-      ],
+      "tags": ["Python", "Flask", "Microsoft SQL Server", "T-SQL", "REST APIs"],
       "githubUrl": "https://github.com/zeeshanrana707/Smart-zoo-management-system"
     }
   ],
@@ -192,31 +112,36 @@
       "title": "Data Science Specialization",
       "issuer": "HEC-DLSEI 3.0 Program",
       "date": "Jan 2026",
-      "skills": "Comprehensive Data Science Curriculum & Practical Implementation"
+      "skills": "Comprehensive Data Science Curriculum & Practical Implementation",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     },
     {
       "title": "Data Science Methodology",
       "issuer": "IBM via Coursera",
       "date": "Jan 2026",
-      "skills": "CRISP-DM, Business Understanding, Data Modeling, Pipeline Architecture"
+      "skills": "CRISP-DM, Business Understanding, Data Modeling, Pipeline Architecture",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     },
     {
       "title": "Tools for Data Science",
       "issuer": "IBM via Coursera",
       "date": "Jan 2026",
-      "skills": "Jupyter Notebooks, Git/GitHub, RStudio, Watson Studio, CLI"
+      "skills": "Jupyter Notebooks, Git/GitHub, RStudio, Watson Studio, CLI",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     },
     {
       "title": "What is Data Science?",
       "issuer": "IBM via Coursera",
       "date": "Jan 2026",
-      "skills": "Statistical Analysis, Predictive Modeling, Machine Learning Fundamentals"
+      "skills": "Statistical Analysis, Predictive Modeling, Machine Learning Fundamentals",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     },
     {
       "title": "AI For Everyone",
       "issuer": "DeepLearning.AI via Coursera",
       "date": "Jul 2025",
-      "skills": "Neural Networks, Machine Learning Strategy, AI Ethics & Project Feasibility"
+      "skills": "Neural Networks, Machine Learning Strategy, AI Ethics & Project Feasibility",
+      "verifyUrl": "https://www.coursera.org/account/accomplishments/verify"
     }
   ]
 }
