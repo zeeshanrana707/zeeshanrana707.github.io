@@ -178,6 +178,7 @@ async function loadData() {
 }
 
 function renderProfile(profile) {
+  window.portfolioProfile = profile;
   document.querySelectorAll('.dynamic-name').forEach(el => el.textContent = profile.name);
   document.querySelectorAll('.dynamic-title').forEach(el => el.textContent = profile.title);
   document.querySelectorAll('.dynamic-headline').forEach(el => el.textContent = profile.headline);
@@ -185,9 +186,13 @@ function renderProfile(profile) {
   const bioEl = document.getElementById('dynamic-bio');
   if (bioEl) bioEl.textContent = profile.bio;
 
-  document.querySelectorAll('.dynamic-email-link').forEach(el => {
-    el.href = `mailto:${profile.email}`;
-    el.textContent = `✉️ ${profile.email}`;
+  document.querySelectorAll('.dynamic-email-link, .dynamic-email-btn').forEach(el => {
+    el.setAttribute('title', 'Click to copy: ' + profile.email);
+    el.onclick = copyEmailAddress;
+    const textSpan = el.querySelector('.email-text');
+    if (textSpan) {
+      textSpan.textContent = profile.email;
+    }
   });
 
   document.querySelectorAll('.dynamic-phone-link').forEach(el => {
@@ -420,12 +425,28 @@ function renderCertifications(certs) {
   }).join('');
 }
 
-// 1-Click Copy Email Utility with Animated Toast
+// 1-Click Copy Email Utility with Animated Toast & Inline Feedback
 window.copyEmailAddress = function(e) {
   if (e) e.preventDefault();
-  const email = "rh3783901@gmail.com";
+  const email = (window.portfolioProfile && window.portfolioProfile.email) ? window.portfolioProfile.email : "rh3783901@gmail.com";
+
   navigator.clipboard.writeText(email).then(() => {
-    showToastNotification("✓ Email copied: " + email);
+    showToastNotification("✓ Copied: " + email);
+
+    // Provide immediate inline visual feedback on the clicked button
+    if (e && e.currentTarget) {
+      const btn = e.currentTarget;
+      const textSpan = btn.querySelector('.email-text');
+      if (textSpan) {
+        const originalText = textSpan.textContent;
+        textSpan.textContent = "Copied to Clipboard!";
+        btn.classList.add('bg-emerald-400', 'text-slate-950');
+        setTimeout(() => {
+          textSpan.textContent = originalText;
+          btn.classList.remove('bg-emerald-400');
+        }, 2000);
+      }
+    }
   }).catch(() => {
     prompt("Copy email address:", email);
   });

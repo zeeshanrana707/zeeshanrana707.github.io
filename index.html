@@ -146,8 +146,10 @@
             <span>Explore Projects</span>
             <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </a>
-          <button onclick="copyEmailAddress(event)" class="px-4 py-3 rounded-xl bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-slate-700 hover:text-cyan-400 text-sm font-mono flex items-center gap-1.5 transition" title="Copy email address to clipboard">
-            <span>📋 Copy Email</span>
+          <button onclick="copyEmailAddress(event)" class="dynamic-email-btn px-5 py-3 rounded-xl bg-slate-900 text-slate-200 border border-slate-800 hover:border-cyan-500/50 hover:text-cyan-300 text-sm font-mono flex items-center gap-2 transition cursor-pointer" title="Click to copy email address">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <span class="email-text">rh3783901@gmail.com</span>
+            <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-400">Click to copy</span>
           </button>
         </div>
       </div>
@@ -401,18 +403,17 @@
           I am actively interviewing for <strong class="text-white">Data Science, Machine Learning (ML), and Natural Language Processing (NLP)</strong> engineering positions. Let's discuss how I can contribute to your team.
         </p>
 
-        <!-- Direct Contact Action Links with 1-Click Copy -->
+        <!-- Direct Contact Action Links with 1-Click Copy on Click -->
         <div class="flex flex-wrap justify-center items-center gap-4 mb-8">
-          <a href="mailto:rh3783901@gmail.com" class="dynamic-email-link px-6 py-3 rounded-xl bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition shadow-lg shadow-cyan-500/20 font-mono">
-            ✉️ rh3783901@gmail.com
-          </a>
-          <button onclick="copyEmailAddress(event)" class="px-4 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold text-sm hover:bg-slate-700 transition border border-slate-700 font-mono">
-            📋 Copy Email
+          <button onclick="copyEmailAddress(event)" class="dynamic-email-btn px-6 py-3.5 rounded-xl bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition shadow-lg shadow-cyan-500/20 font-mono flex items-center gap-2.5 cursor-pointer group" title="Click to copy email address">
+            <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <span class="email-text">rh3783901@gmail.com</span>
+            <span class="text-[11px] bg-slate-950/20 px-2 py-0.5 rounded font-sans font-medium group-hover:bg-slate-950/30">Click to Copy</span>
           </button>
-          <a href="https://wa.me/923019843724" target="_blank" rel="noopener noreferrer" class="dynamic-phone-link px-6 py-3 rounded-xl bg-slate-800 text-white font-semibold text-sm hover:bg-slate-700 transition border border-slate-700 font-mono">
+          <a href="https://wa.me/923019843724" target="_blank" rel="noopener noreferrer" class="dynamic-phone-link px-6 py-3.5 rounded-xl bg-slate-800 text-white font-semibold text-sm hover:bg-slate-700 transition border border-slate-700 font-mono">
             💬 WhatsApp
           </a>
-          <button onclick="openResumeModal()" class="px-6 py-3 rounded-xl bg-slate-900 text-cyan-400 font-semibold text-sm hover:bg-slate-800 transition border border-cyan-800/60 font-mono">
+          <button onclick="openResumeModal()" class="px-6 py-3.5 rounded-xl bg-slate-900 text-cyan-400 font-semibold text-sm hover:bg-slate-800 transition border border-cyan-800/60 font-mono">
             📄 View Resume
           </button>
         </div>
@@ -433,7 +434,7 @@
       <div class="flex items-center gap-6">
         <a href="https://github.com/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-github-link hover:text-cyan-400 transition">GitHub</a>
         <a href="https://linkedin.com/in/zeeshanrana707" target="_blank" rel="noopener noreferrer" class="dynamic-linkedin-link hover:text-cyan-400 transition">LinkedIn</a>
-        <a href="mailto:rh3783901@gmail.com" class="hover:text-cyan-400 transition">Email</a>
+        <button onclick="copyEmailAddress(event)" class="hover:text-cyan-400 transition cursor-pointer" title="Click to copy email address">Email (Copy)</button>
       </div>
     </div>
   </footer>
@@ -463,7 +464,7 @@
         <div class="border-b border-slate-800 pb-4 text-center">
           <h1 class="text-2xl font-bold text-white tracking-wide dynamic-name">MUHAMMAD ZEESHAN</h1>
           <p class="text-xs text-slate-400 font-mono mt-1">
-            Lahore, Pakistan | +92 301 9843724 | rh3783901@gmail.com | github.com/zeeshanrana707
+            Lahore, Pakistan | +92 301 9843724 | <button onclick="copyEmailAddress(event)" class="text-cyan-400 hover:underline cursor-pointer" title="Click to copy email">rh3783901@gmail.com</button> | github.com/zeeshanrana707
           </p>
         </div>
 
