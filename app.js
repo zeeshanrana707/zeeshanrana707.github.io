@@ -439,12 +439,12 @@ window.copyEmailAddress = function(e) {
       const textSpan = btn.querySelector('.email-text');
       if (textSpan) {
         const originalText = textSpan.textContent;
-        textSpan.textContent = "Copied to Clipboard!";
+        textSpan.textContent = "Copied!";
         btn.classList.add('bg-emerald-400', 'text-slate-950');
         setTimeout(() => {
           textSpan.textContent = originalText;
           btn.classList.remove('bg-emerald-400');
-        }, 2000);
+        }, 1800);
       }
     }
   }).catch(() => {
