@@ -29,7 +29,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col">
 
-  <!-- PIN Protection Lock Screen -->
+  <!-- Cryptographic PIN Lock Screen (SHA-256 Protected) -->
   <div id="pin-lock-screen" class="fixed inset-0 z-50 bg-slate-950 flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-sm w-full text-center shadow-2xl">
       <div class="w-12 h-12 rounded-2xl bg-cyan-950 border border-cyan-800/60 text-cyan-400 flex items-center justify-center mx-auto mb-4 text-xl">
@@ -41,7 +41,7 @@
       <form onsubmit="handlePinSubmit(event)" class="space-y-4">
         <input type="password" id="admin-pin-input" placeholder="Enter Password" autofocus class="w-full text-center bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-lg font-mono text-cyan-400 tracking-widest focus:outline-none focus:border-cyan-400">
         <p id="pin-error" class="text-xs text-rose-400 hidden">Incorrect password. Try again.</p>
-        <button type="submit" class="w-full py-3 rounded-xl bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition font-mono shadow-lg shadow-cyan-500/20">
+        <button type="submit" id="unlock-btn" class="w-full py-3 rounded-xl bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition font-mono shadow-lg shadow-cyan-500/20">
           Unlock Admin Panel
         </button>
       </form>
@@ -308,7 +308,7 @@
         <div class="grid grid-cols-3 gap-4">
           <div>
             <label class="block text-xs font-mono font-semibold text-slate-300 mb-1">Period</label>
-            <input type="text" id="m-exp-period" placeholder="July 2025 – Present" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-white text-sm">
+            <input type="text" id="m-exp-period" placeholder="July 2025 – September 2025 (3 Months)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-white text-sm">
           </div>
           <div>
             <label class="block text-xs font-mono font-semibold text-slate-300 mb-1">Location</label>
@@ -374,15 +374,25 @@
     </div>
   </div>
 
-  <!-- Admin Panel Controller Logic -->
+  <!-- Admin Panel Controller Logic with SHA-256 Authentication -->
   <script>
     let appData = {};
-    const ADMIN_PIN = "4May2026."; // Updated Admin password
+    // SHA-256 cryptographic hash of your password
+    const ADMIN_HASH = "2a9d9a299ade1874243cacd741ba788e73247395c8f3bfb42f99075d141d84da";
 
-    function handlePinSubmit(e) {
+    async function sha256Hex(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function handlePinSubmit(e) {
       e.preventDefault();
-      const pin = document.getElementById('admin-pin-input').value;
-      if (pin === ADMIN_PIN) {
+      const input = document.getElementById('admin-pin-input').value;
+      const hash = await sha256Hex(input);
+      
+      if (hash === ADMIN_HASH) {
         document.getElementById('pin-lock-screen').classList.add('hidden');
         sessionStorage.setItem('admin_unlocked', 'true');
         initAdmin();
@@ -398,14 +408,14 @@
       document.getElementById('pin-lock-screen').classList.remove('hidden');
     }
 
-    // Auto-unlock if already unlocked in this session
+    // Auto-unlock if already authenticated in this session
     if (sessionStorage.getItem('admin_unlocked') === 'true') {
       document.getElementById('pin-lock-screen').classList.add('hidden');
     }
 
     async function initAdmin() {
       try {
-        const res = await fetch('data.json?t=' + Date.now());
+        const res = await fetch('data.json');
         if (res.ok) {
           appData = await res.json();
         }
@@ -418,26 +428,6 @@
         if (cached) {
           try { appData = JSON.parse(cached); } catch(e) {}
         }
-      }
-
-      if (!appData.profile) {
-        appData = {
-          profile: {
-            name: "Muhammad Zeeshan",
-            title: "Data Scientist & AI/ML Developer",
-            headline: "Specializing in Data Science, Machine Learning (ML), and Natural Language Processing (NLP).",
-            bio: "I am an AI Developer and Data Scientist passionate about architecting predictive machine learning models, natural language processing (NLP) pipelines, and intelligent data systems.",
-            email: "rh3783901@gmail.com",
-            phone: "+92 301 9843724",
-            github: "https://github.com/zeeshanrana707",
-            linkedin: "https://linkedin.com/in/zeeshanrana707"
-          },
-          stats: [],
-          skills: [],
-          experience: [],
-          projects: [],
-          certifications: []
-        };
       }
 
       populateProfileForm();
@@ -649,9 +639,9 @@
       } else {
         document.getElementById('m-exp-role').value = '';
         document.getElementById('m-exp-company').value = '';
-        document.getElementById('m-exp-period').value = '2026 – Present';
+        document.getElementById('m-exp-period').value = 'July 2025 – September 2025 (3 Months)';
         document.getElementById('m-exp-location').value = 'Remote';
-        document.getElementById('m-exp-type').value = 'Full-Time';
+        document.getElementById('m-exp-type').value = 'Internship';
         document.getElementById('m-exp-highlights').value = '';
         document.getElementById('m-exp-tags').value = 'Python, Machine Learning, Data Science';
       }

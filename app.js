@@ -1,5 +1,5 @@
 // Muhammad Zeeshan Portfolio Engine
-// Supports dynamic rendering, online credential verification, and offline fallback
+// Enhanced for High Speed, Edge CDN Caching, Category Filtering, and Live Search
 
 const defaultData = {
   "profile": {
@@ -149,57 +149,55 @@ const defaultData = {
   ]
 };
 
+let cachedProjects = [];
+let activeCategory = 'All';
+let searchQuery = '';
+
+// High-speed edge CDN caching loader
 async function loadData() {
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const url = isLocal ? ('data.json?t=' + Date.now()) : 'data.json';
+
   try {
-    const res = await fetch('data.json?t=' + Date.now());
+    const res = await fetch(url);
     if (res.ok) {
       return await res.json();
     }
   } catch (e) {
-    console.warn("Serving from local storage or embedded fallback.");
+    console.warn("Serving from localStorage or embedded fallback.");
   }
-  
+
   const local = localStorage.getItem('portfolio_data');
   if (local) {
     try {
       return JSON.parse(local);
     } catch (err) {}
   }
-  
+
   return defaultData;
 }
 
 function renderProfile(profile) {
-  const nameEls = document.querySelectorAll('.dynamic-name');
-  nameEls.forEach(el => el.textContent = profile.name);
-
-  const titleEls = document.querySelectorAll('.dynamic-title');
-  titleEls.forEach(el => el.textContent = profile.title);
-
-  const headlineEls = document.querySelectorAll('.dynamic-headline');
-  headlineEls.forEach(el => el.textContent = profile.headline);
+  document.querySelectorAll('.dynamic-name').forEach(el => el.textContent = profile.name);
+  document.querySelectorAll('.dynamic-title').forEach(el => el.textContent = profile.title);
+  document.querySelectorAll('.dynamic-headline').forEach(el => el.textContent = profile.headline);
 
   const bioEl = document.getElementById('dynamic-bio');
   if (bioEl) bioEl.textContent = profile.bio;
 
-  const emailLinks = document.querySelectorAll('.dynamic-email-link');
-  emailLinks.forEach(el => {
+  document.querySelectorAll('.dynamic-email-link').forEach(el => {
     el.href = `mailto:${profile.email}`;
     el.textContent = `✉️ ${profile.email}`;
   });
 
-  const phoneLinks = document.querySelectorAll('.dynamic-phone-link');
-  phoneLinks.forEach(el => {
+  document.querySelectorAll('.dynamic-phone-link').forEach(el => {
     const cleanPhone = (profile.phone || '').replace(/[^0-9]/g, '');
     el.href = `https://wa.me/${cleanPhone}`;
     el.textContent = `💬 WhatsApp (${profile.phone})`;
   });
 
-  const githubLinks = document.querySelectorAll('.dynamic-github-link');
-  githubLinks.forEach(el => el.href = profile.github);
-
-  const linkedinLinks = document.querySelectorAll('.dynamic-linkedin-link');
-  linkedinLinks.forEach(el => el.href = profile.linkedin);
+  document.querySelectorAll('.dynamic-github-link').forEach(el => el.href = profile.github);
+  document.querySelectorAll('.dynamic-linkedin-link').forEach(el => el.href = profile.linkedin);
 }
 
 function renderStats(stats) {
@@ -263,6 +261,86 @@ function renderExperience(experiences) {
   `).join('');
 }
 
+// Interactive Project Filter Pills & Search
+function setupProjectFilters(projects) {
+  cachedProjects = projects;
+  const filterContainer = document.getElementById('project-filters');
+  if (!filterContainer) return;
+
+  const categories = ['All'];
+  projects.forEach(p => {
+    if (p.badge && !categories.includes(p.badge)) {
+      categories.push(p.badge);
+    }
+  });
+
+  filterContainer.innerHTML = categories.map(cat => `
+    <button onclick="setProjectCategory('${cat}')" id="cat-btn-${cat.replace(/[^a-zA-Z0-9]/g, '')}" class="category-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold font-mono transition border ${cat === activeCategory ? 'bg-cyan-400 text-slate-950 border-cyan-300' : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-white hover:border-slate-700'}">
+      ${cat}
+    </button>
+  `).join('');
+}
+
+window.setProjectCategory = function(cat) {
+  activeCategory = cat;
+  document.querySelectorAll('.category-pill').forEach(btn => {
+    btn.classList.remove('bg-cyan-400', 'text-slate-950', 'border-cyan-300');
+    btn.classList.add('bg-slate-900', 'text-slate-400', 'border-slate-800');
+  });
+
+  const activeBtn = document.getElementById('cat-btn-' + cat.replace(/[^a-zA-Z0-9]/g, ''));
+  if (activeBtn) {
+    activeBtn.classList.add('bg-cyan-400', 'text-slate-950', 'border-cyan-300');
+    activeBtn.classList.remove('bg-slate-900', 'text-slate-400', 'border-slate-800');
+  }
+
+  applyProjectFilters();
+};
+
+window.handleProjectSearch = function(query) {
+  searchQuery = (query || '').toLowerCase().trim();
+  applyProjectFilters();
+};
+
+function applyProjectFilters() {
+  const container = document.getElementById('projects-grid');
+  if (!container) return;
+
+  const filtered = cachedProjects.filter(p => {
+    const matchesCat = activeCategory === 'All' || p.badge === activeCategory;
+    const matchesSearch = !searchQuery || 
+      p.title.toLowerCase().includes(searchQuery) ||
+      (p.description || '').toLowerCase().includes(searchQuery) ||
+      (p.problem || '').toLowerCase().includes(searchQuery) ||
+      (p.solution || '').toLowerCase().includes(searchQuery) ||
+      (p.tags || []).some(t => t.toLowerCase().includes(searchQuery));
+    return matchesCat && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full p-12 text-center bg-slate-900/60 rounded-3xl border border-slate-800">
+        <p class="text-sm text-slate-400 font-mono">No matching projects found for "${searchQuery}".</p>
+        <button onclick="clearSearch()" class="mt-3 px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-cyan-950 text-cyan-400 border border-cyan-800/60 hover:bg-cyan-900">
+          Reset Filter
+        </button>
+      </div>
+    `;
+    return;
+  }
+
+  renderProjects(filtered);
+}
+
+window.clearSearch = function() {
+  const input = document.getElementById('project-search-input');
+  if (input) input.value = '';
+  searchQuery = '';
+  activeCategory = 'All';
+  setupProjectFilters(cachedProjects);
+  applyProjectFilters();
+};
+
 function renderProjects(projects) {
   const container = document.getElementById('projects-grid');
   if (!container || !Array.isArray(projects)) return;
@@ -306,7 +384,7 @@ function renderProjects(projects) {
       </div>
 
       <div class="p-5 bg-slate-950/80 border-t border-slate-800/80 flex items-center justify-between">
-        <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition group-hover:translate-x-0.5">
+        <a href="${proj.githubUrl}" target="_blank" rel="noopener noreferrer" onclick="trackEvent('click_project_github', '${proj.id}')" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition group-hover:translate-x-0.5">
           <span>View Source Code on GitHub</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
@@ -331,7 +409,7 @@ function renderCertifications(certs) {
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">${c.skills}</p>
         </div>
         <div class="mt-5 pt-3 border-t border-slate-800/60 flex items-center justify-between">
-          <a href="${verifyUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-medium transition" title="Verify certificate online">
+          <a href="${verifyUrl}" target="_blank" rel="noopener noreferrer" onclick="trackEvent('verify_credential', '${c.title}')" class="group inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-medium transition" title="Verify certificate online">
             <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
             <span class="underline underline-offset-2">Verify Credential Online</span>
             <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
@@ -342,8 +420,44 @@ function renderCertifications(certs) {
   }).join('');
 }
 
+// 1-Click Copy Email Utility with Animated Toast
+window.copyEmailAddress = function(e) {
+  if (e) e.preventDefault();
+  const email = "rh3783901@gmail.com";
+  navigator.clipboard.writeText(email).then(() => {
+    showToastNotification("✓ Email copied: " + email);
+  }).catch(() => {
+    prompt("Copy email address:", email);
+  });
+};
+
+function showToastNotification(message) {
+  let toast = document.getElementById('global-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'global-toast';
+    toast.className = 'fixed bottom-6 right-6 z-50 bg-cyan-400 text-slate-950 font-mono font-bold px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-2 text-sm transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.remove('translate-y-10', 'opacity-0');
+  toast.classList.add('translate-y-0', 'opacity-100');
+  setTimeout(() => {
+    toast.classList.add('translate-y-10', 'opacity-0');
+    toast.classList.remove('translate-y-0', 'opacity-100');
+  }, 3000);
+}
+
+// Lightweight Recruiter Event Tracker
+window.trackEvent = function(eventName, detail) {
+  if (window.gtag) {
+    window.gtag('event', eventName, { 'event_label': detail });
+  }
+};
+
 // Interactive Resume Modal Functions
 window.openResumeModal = function() {
+  trackEvent('open_resume_modal', 'CV viewed');
   const modal = document.getElementById('resume-modal');
   if (modal) {
     modal.classList.remove('hidden');
@@ -360,6 +474,7 @@ window.closeResumeModal = function() {
 };
 
 window.printResume = function() {
+  trackEvent('download_resume_pdf', 'PDF requested');
   window.print();
 };
 
@@ -369,6 +484,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderStats(data.stats);
   renderSkills(data.skills);
   renderExperience(data.experience);
+  setupProjectFilters(data.projects);
   renderProjects(data.projects);
   renderCertifications(data.certifications);
 });

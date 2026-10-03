@@ -4,12 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Muhammad Zeeshan | Data Science, ML & NLP Developer</title>
-  <meta name="description" content="Portfolio of Muhammad Zeeshan - Data Scientist & AI Developer specializing in Machine Learning, Natural Language Processing (NLP), and intelligent data architectures.">
+  <meta name="description" content="Portfolio of Muhammad Zeeshan - Data Scientist & AI Developer specializing in Machine Learning (ML), Natural Language Processing (NLP), and intelligent data architectures.">
+  <link rel="canonical" href="https://zeeshanrana707.github.io/">
+
+  <!-- Open Graph / Social Sharing Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zeeshanrana707.github.io/">
+  <meta property="og:title" content="Muhammad Zeeshan | Data Scientist & AI/ML Developer">
+  <meta property="og:description" content="Specializing in Data Science, Machine Learning, and NLP. Turning complex data into actionable predictive models.">
   
+  <!-- JSON-LD Structured Data for Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Zeeshan",
+    "jobTitle": "Data Scientist & AI/ML Developer",
+    "url": "https://zeeshanrana707.github.io",
+    "sameAs": [
+      "https://github.com/zeeshanrana707",
+      "https://linkedin.com/in/zeeshanrana707"
+    ],
+    "knowsAbout": ["Data Science", "Machine Learning", "Natural Language Processing", "Python", "Flask", "SQL"]
+  }
+  </script>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts -->
+  <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -62,7 +85,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black">
 
-  <!-- Fixed Navigation Header (Clean, Recruiter Focused) -->
+  <!-- Fixed Navigation Header -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#" class="flex items-center gap-2.5 font-mono font-bold text-lg text-white hover:text-cyan-400 transition">
@@ -123,15 +146,30 @@
             <span>Explore Projects</span>
             <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </a>
-          <a href="#contact" class="px-6 py-3 rounded-xl text-slate-300 font-semibold text-sm hover:text-cyan-400 transition">
-            Get In Touch →
-          </a>
+          <button onclick="copyEmailAddress(event)" class="px-4 py-3 rounded-xl bg-slate-900/80 text-slate-300 border border-slate-800 hover:border-slate-700 hover:text-cyan-400 text-sm font-mono flex items-center gap-1.5 transition" title="Copy email address to clipboard">
+            <span>📋 Copy Email</span>
+          </button>
         </div>
       </div>
 
-      <!-- Quick Metrics Counters -->
+      <!-- Quick Metrics Counters (Pre-Rendered for 0ms First Paint) -->
       <div id="stats-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
-        <!-- Rendered dynamically via app.js -->
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition duration-300 shadow-lg">
+          <div class="text-3xl font-extrabold text-cyan-400 font-mono">3 Months</div>
+          <div class="text-sm text-slate-400 mt-1 font-medium">Industry Internship</div>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition duration-300 shadow-lg">
+          <div class="text-3xl font-extrabold text-cyan-400 font-mono">3+</div>
+          <div class="text-sm text-slate-400 mt-1 font-medium">AI & ML Systems</div>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition duration-300 shadow-lg">
+          <div class="text-3xl font-extrabold text-cyan-400 font-mono">98.77%</div>
+          <div class="text-sm text-slate-400 mt-1 font-medium">Model Test Accuracy</div>
+        </div>
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition duration-300 shadow-lg">
+          <div class="text-3xl font-extrabold text-cyan-400 font-mono">5</div>
+          <div class="text-sm text-slate-400 mt-1 font-medium">Verified Certifications</div>
+        </div>
       </div>
     </section>
 
@@ -166,7 +204,7 @@
         <p class="text-slate-400 text-sm mt-2">Core proficiencies categorized across Data Science, Machine Learning, NLP, and software engineering.</p>
       </div>
       <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Rendered dynamically via app.js -->
+        <!-- Rendered dynamically and hydrated via app.js -->
       </div>
     </section>
 
@@ -178,31 +216,162 @@
         <p class="text-slate-400 text-sm mt-2">Industry and collaborative open-source engineering roles documented with measurable outcomes.</p>
       </div>
       <div id="experience-timeline" class="max-w-3xl">
-        <!-- Rendered dynamically via app.js -->
+        <!-- Pre-rendered for instant viewing -->
+        <div class="relative pl-8 pb-10 border-l border-slate-800 last:pb-0">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-slate-950 border-2 border-cyan-400"></div>
+          <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-7 hover:border-slate-700 transition">
+            <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 text-xs font-semibold rounded bg-cyan-950 text-cyan-400 border border-cyan-800/50 mb-1.5">Internship</span>
+                <h3 class="text-xl font-bold text-white">Data Scraper Intern</h3>
+                <div class="text-sm text-cyan-300 font-medium">Programmers Force • <span class="text-slate-400">Remote</span></div>
+              </div>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/60 px-3 py-1 rounded-full border border-slate-700/50">July 2025 – September 2025 (3 Months)</span>
+            </div>
+            <ul class="space-y-2 mt-4 text-slate-300 text-sm leading-relaxed">
+              <li class="flex items-start gap-2.5"><span class="text-cyan-400 mt-1">▸</span><span>Architected and deployed automated Python web scraping pipelines (Scrapy, Selenium, BeautifulSoup4) to extract deep-nested unstructured data from dynamic JavaScript platforms.</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-cyan-400 mt-1">▸</span><span>Implemented anti-bot mitigation protocols (proxy rotation, user-agent pools, backoff retry logic), achieving a 99.2% extraction success rate with zero IP bans.</span></li>
+              <li class="flex items-start gap-2.5"><span class="text-cyan-400 mt-1">▸</span><span>Engineered automated data validation scripts in Pandas, eliminating duplicate records and reducing downstream processing time by 80%.</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Featured Projects Section -->
+    <!-- Featured Projects Section with Interactive Category Filters & Live Search -->
     <section id="projects" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
-      <div class="flex flex-wrap justify-between items-end gap-4 mb-10">
+      <div class="flex flex-wrap justify-between items-end gap-4 mb-6">
         <div>
           <span class="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">04. Code & Architecture</span>
           <h2 class="text-3xl font-bold text-white mt-1">Featured Projects</h2>
           <p class="text-slate-400 text-sm mt-2">Production-grade applications showcasing Machine Learning, NLP, data pipelines, and backend system designs.</p>
         </div>
         <a href="https://github.com/zeeshanrana707?tab=repositories" target="_blank" rel="noopener noreferrer" class="dynamic-github-link text-sm font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-mono">
-          <span>View GitHub</span>
+          <span>View All on GitHub</span>
           <span>→</span>
         </a>
       </div>
+
+      <!-- Scalability: Search Bar & Category Filter Pills -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-8 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+        <!-- Filter Pills Container -->
+        <div id="project-filters" class="flex flex-wrap items-center gap-2">
+          <!-- Populated by app.js -->
+        </div>
+
+        <!-- Live Instant Search Box -->
+        <div class="relative w-full sm:w-72">
+          <input type="text" id="project-search-input" oninput="handleProjectSearch(this.value)" placeholder="Search by tech, NLP, ML..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-400">
+          <span class="absolute right-3 top-2.5 text-xs text-slate-500">🔍</span>
+        </div>
+      </div>
       
-      <!-- Responsive dynamic grid -->
+      <!-- Responsive dynamic grid (Pre-Rendered for Instant 0ms Paint) -->
       <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
-        <!-- Rendered dynamically via app.js -->
+        
+        <!-- Project 1: MediPredict -->
+        <div class="group rounded-2xl bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-xl">
+          <div class="p-6 sm:p-7 flex-1 flex flex-col">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">Healthcare AI</span>
+              <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2.5 py-1 rounded-md">98.77% Test Accuracy</span>
+            </div>
+            <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition duration-200 mb-2">MediPredict — AI Disease Prediction System</h3>
+            <p class="text-sm text-slate-400 mb-6 leading-relaxed flex-1">An intelligent clinical triage application classifying diseases based on symptoms with sub-second latency.</p>
+            <div class="space-y-3.5 mb-6 text-xs bg-slate-950/60 p-4 rounded-xl border border-slate-800/60">
+              <div>
+                <span class="font-bold uppercase tracking-wider text-rose-400 block mb-0.5">The Problem</span>
+                <p class="text-slate-300 leading-relaxed">Diagnostic delays from overlapping symptom presentations during initial triage.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-800/50">
+                <span class="font-bold uppercase tracking-wider text-cyan-400 block mb-0.5">The Solution</span>
+                <p class="text-slate-300 leading-relaxed">Gaussian Naive Bayes ML classifier with real-time symptom search autocomplete in Flask.</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">Python</span>
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">Scikit-learn</span>
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">Flask</span>
+            </div>
+          </div>
+          <div class="p-5 bg-slate-950/80 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="https://github.com/zeeshanrana707/Disease_Prediction_System" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition">
+              <span>View Source Code on GitHub</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: AI Smart Banking -->
+        <div class="group rounded-2xl bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-xl">
+          <div class="p-6 sm:p-7 flex-1 flex flex-col">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">FinTech / Anomaly</span>
+              <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2.5 py-1 rounded-md">Unsupervised ML</span>
+            </div>
+            <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition duration-200 mb-2">AI Smart Banking & Real-Time Fraud Detection</h3>
+            <p class="text-sm text-slate-400 mb-6 leading-relaxed flex-1">Digital banking platform with embedded unsupervised machine learning to detect and quarantine fraudulent transactions.</p>
+            <div class="space-y-3.5 mb-6 text-xs bg-slate-950/60 p-4 rounded-xl border border-slate-800/60">
+              <div>
+                <span class="font-bold uppercase tracking-wider text-rose-400 block mb-0.5">The Problem</span>
+                <p class="text-slate-300 leading-relaxed">Rule-based systems miss zero-day fraudulent patterns without manual intervention.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-800/50">
+                <span class="font-bold uppercase tracking-wider text-cyan-400 block mb-0.5">The Solution</span>
+                <p class="text-slate-300 leading-relaxed">Isolation Forest anomaly scoring analyzing transfer velocities in real-time.</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">Python</span>
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">Isolation Forest</span>
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">Flask</span>
+            </div>
+          </div>
+          <div class="p-5 bg-slate-950/80 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="https://github.com/zeeshanrana707/Ai_Smart_Banking" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition">
+              <span>View Source Code on GitHub</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: Smart Zoo Management -->
+        <div class="group rounded-2xl bg-slate-900/90 border border-slate-800/90 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-xl">
+          <div class="p-6 sm:p-7 flex-1 flex flex-col">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">Enterprise Systems</span>
+              <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2.5 py-1 rounded-md">&lt;50ms Query Latency</span>
+            </div>
+            <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition duration-200 mb-2">Smart Zoo Management & Operations System</h3>
+            <p class="text-sm text-slate-400 mb-6 leading-relaxed flex-1">Full-stack operations platform for animal healthcare tracking, feeding schedules, and personnel management.</p>
+            <div class="space-y-3.5 mb-6 text-xs bg-slate-950/60 p-4 rounded-xl border border-slate-800/60">
+              <div>
+                <span class="font-bold uppercase tracking-wider text-rose-400 block mb-0.5">The Problem</span>
+                <p class="text-slate-300 leading-relaxed">Fragmented logging leads to critical oversights in veterinary regimens and shifts.</p>
+              </div>
+              <div class="pt-2 border-t border-slate-800/50">
+                <span class="font-bold uppercase tracking-wider text-cyan-400 block mb-0.5">The Solution</span>
+                <p class="text-slate-300 leading-relaxed">Normalized relational schema in MS SQL Server with modular Flask REST APIs.</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mt-auto">
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">Python</span>
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">Flask</span>
+              <span class="text-[11px] font-mono px-2 py-1 rounded bg-slate-800 text-slate-300">MS SQL</span>
+            </div>
+          </div>
+          <div class="p-5 bg-slate-950/80 border-t border-slate-800/80 flex items-center justify-between">
+            <a href="https://github.com/zeeshanrana707/Smart-zoo-management-system" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition">
+              <span>View Source Code on GitHub</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Certifications Section (with Online Credential Verification) -->
+    <!-- Certifications Section -->
     <section id="certifications" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-800/80">
       <div class="flex flex-wrap justify-between items-end gap-4 mb-10">
         <div>
@@ -214,7 +383,7 @@
       
       <!-- Responsive dynamic grid for certifications -->
       <div id="certifications-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-        <!-- Rendered dynamically via app.js -->
+        <!-- Rendered and hydrated via app.js -->
       </div>
     </section>
 
@@ -232,13 +401,16 @@
           I am actively interviewing for <strong class="text-white">Data Science, Machine Learning (ML), and Natural Language Processing (NLP)</strong> engineering positions. Let's discuss how I can contribute to your team.
         </p>
 
-        <!-- Direct Contact Action Links -->
+        <!-- Direct Contact Action Links with 1-Click Copy -->
         <div class="flex flex-wrap justify-center items-center gap-4 mb-8">
           <a href="mailto:rh3783901@gmail.com" class="dynamic-email-link px-6 py-3 rounded-xl bg-cyan-400 text-slate-950 font-bold text-sm hover:bg-cyan-300 transition shadow-lg shadow-cyan-500/20 font-mono">
             ✉️ rh3783901@gmail.com
           </a>
+          <button onclick="copyEmailAddress(event)" class="px-4 py-3 rounded-xl bg-slate-800 text-slate-300 hover:text-white font-semibold text-sm hover:bg-slate-700 transition border border-slate-700 font-mono">
+            📋 Copy Email
+          </button>
           <a href="https://wa.me/923019843724" target="_blank" rel="noopener noreferrer" class="dynamic-phone-link px-6 py-3 rounded-xl bg-slate-800 text-white font-semibold text-sm hover:bg-slate-700 transition border border-slate-700 font-mono">
-            💬 WhatsApp (+92 301 9843724)
+            💬 WhatsApp
           </a>
           <button onclick="openResumeModal()" class="px-6 py-3 rounded-xl bg-slate-900 text-cyan-400 font-semibold text-sm hover:bg-slate-800 transition border border-cyan-800/60 font-mono">
             📄 View Resume
