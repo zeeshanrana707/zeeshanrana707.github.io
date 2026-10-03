@@ -187,7 +187,7 @@ function renderProfile(profile) {
   if (bioEl) bioEl.textContent = profile.bio;
 
   document.querySelectorAll('.dynamic-email-link, .dynamic-email-btn').forEach(el => {
-    el.setAttribute('title', 'Click to copy: ' + profile.email);
+    el.setAttribute('title', profile.email);
     el.onclick = copyEmailAddress;
     const textSpan = el.querySelector('.email-text');
     if (textSpan) {
