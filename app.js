@@ -495,8 +495,33 @@ window.closeResumeModal = function() {
 };
 
 window.printResume = function() {
-  trackEvent('download_resume_pdf', 'PDF requested');
-  window.print();
+  trackEvent('print_resume', 'Print requested');
+  
+  // Use invisible iframe targeting dedicated 1-page ATS template
+  let iframe = document.getElementById('resume-print-iframe');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.id = 'resume-print-iframe';
+    iframe.style.position = 'fixed';
+    iframe.style.right = '0';
+    iframe.style.bottom = '0';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = 'none';
+    document.body.appendChild(iframe);
+  }
+  
+  iframe.src = 'resume-print.html';
+  iframe.onload = function() {
+    setTimeout(() => {
+      try {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      } catch (e) {
+        window.print();
+      }
+    }, 150);
+  };
 };
 
 document.addEventListener('DOMContentLoaded', async () => {

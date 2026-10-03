@@ -73,22 +73,63 @@
       50% { opacity: 0.6; transform: scale(1.1); }
     }
     @media print {
-      body * {
-        visibility: hidden;
+      /* Completely eliminate main page layout flow so zero blank pages are generated */
+      header, main, footer, #admin-trigger, #global-toast, .no-print {
+        display: none !important;
       }
-      #resume-modal, #resume-modal * {
-        visibility: visible;
+      html, body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
       #resume-modal {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        background: white !important;
-        color: black !important;
+        display: block !important;
+        position: static !important;
+        inset: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
-      .no-print {
-        display: none !important;
+      #resume-modal > div {
+        background: #ffffff !important;
+        border: none !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      #resume-printable-area {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+      }
+      #resume-printable-area * {
+        color: #1e293b !important;
+        background: transparent !important;
+        border-color: #cbd5e1 !important;
+      }
+      #resume-printable-area h1,
+      #resume-printable-area h2,
+      #resume-printable-area strong {
+        color: #0f172a !important;
+      }
+      #resume-printable-area .text-cyan-400 {
+        color: #0284c7 !important;
+      }
+      #resume-printable-area .text-slate-400,
+      #resume-printable-area .text-slate-300 {
+        color: #475569 !important;
       }
     }
   </style>
